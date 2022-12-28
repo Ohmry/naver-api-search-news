@@ -12,14 +12,17 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 네이버 뉴스 검색 API
+ */
 public class NaverNewsSearchApi {
     private final String BASE_URL = "https://openapi.naver.com/v1/search/news.json";
     private final String CLIENT_ID;
     private final String CLIENT_SECRET;
 
-    public NaverNewsSearchApi(String clientId, String clientSecret) {
-        this.CLIENT_ID = clientId;
-        this.CLIENT_SECRET = clientSecret;
+    public NaverNewsSearchApi(String CLIENT_ID, String CLIENT_SECRET) {
+        this.CLIENT_ID = CLIENT_ID;
+        this.CLIENT_SECRET = CLIENT_SECRET;
     }
 
     public NaverNewsSearchApiBuilder builder() {
