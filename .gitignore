@@ -36,4 +36,3 @@ build/
 
 ### Mac OS ###
 .DS_Store
-/src/test/java/io/github/ohmry/naver/api/search/news/NaverNewsSearchApiTests.java
