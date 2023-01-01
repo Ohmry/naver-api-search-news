@@ -1,28 +1,53 @@
 package io.github.ohmry.naver.api.search.news;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
+import java.util.Map;
 
 public class NaverNewsSearchApiTests {
-    @Test
-    public void Test() {
-        NaverNewsSearchApi naverNewsSearchApi = new NaverNewsSearchApi("", "");
-        final int displayCount = 10;
-        List<NaverNews> list = naverNewsSearchApi.builder()
-                .query("청년도약계좌")
-                .display(displayCount)
-                .sort(NaverNewsSearchApiSortType.ACCURACY)
-                .fetch();
+    public static String NAVER_CLIENT_ID;
+    public static String NAVER_CLIENT_SECRET;
 
-        for (NaverNews news : list) {
-            System.out.println("------------------------------------------");
-            System.out.println(String.format("%15s: %s", "title", news.title));
-            System.out.println(String.format("%15s: %s", "originalink", news.originalink));
-            System.out.println(String.format("%15s: %s", "link", news.link));
-            System.out.println(String.format("%15s: %s", "description", news.description));
-            System.out.println(String.format("%15s: %s", "pubDate", news.pubDate));
+    @BeforeAll
+    static void beforeAll() {
+        Map<String, String> environment = System.getenv();
+        NaverNewsSearchApiTests.NAVER_CLIENT_ID = environment.get("NAVER_CLIENT_ID");
+        NaverNewsSearchApiTests.NAVER_CLIENT_SECRET = environment.get("NAVER_CLIENT_SECRET");
+    }
+
+    @Test
+    public void AuthorizedFailed() {
+        NaverNewsSearchApi naverNewsSearchApi = new NaverNewsSearchApi("", NAVER_CLIENT_SECRET);
+        naverNewsSearchApi.setQuery("부동산");
+        naverNewsSearchApi.setDisplay(10);
+        naverNewsSearchApi.setSort(NaverNewsSearchSortType.DATE);
+        naverNewsSearchApi.setStart(2);
+        NaverNewsSearchResult result = naverNewsSearchApi.fetch();
+
+        assert result.isSuccess() == false;
+        assert result.getItems() == null;
+    }
+
+    @Test
+    public void Success() {
+        NaverNewsSearchApi naverNewsSearchApi = new NaverNewsSearchApi(NAVER_CLIENT_ID, NAVER_CLIENT_SECRET);
+        naverNewsSearchApi.setQuery("부동산");
+        naverNewsSearchApi.setDisplay(10);
+        naverNewsSearchApi.setSort(NaverNewsSearchSortType.DATE);
+        naverNewsSearchApi.setStart(2);
+        NaverNewsSearchResult result = naverNewsSearchApi.fetch();
+
+        assert result.isSuccess() == true;
+        assert result.getItems() != null;
+
+        for (NaverNews naverNews : result.getItems()) {
+            System.out.println(String.format("%15s: %s", "title", naverNews.title));
+            System.out.println(String.format("%15s: %s", "originallink", naverNews.originalink));
+            System.out.println(String.format("%15s: %s", "link", naverNews.link));
+            System.out.println(String.format("%15s: %s", "description", naverNews.description));
+            System.out.println(String.format("%15s: %s", "pubDate", naverNews.pubDate));
+            System.out.println("-----------------------------------------");
         }
-        System.out.println("------------------------------------------");
     }
 }

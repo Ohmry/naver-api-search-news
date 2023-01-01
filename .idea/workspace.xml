@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95d76ee7-565c-48f6-88fa-5d554cbc79ee" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/ohmry/naver/api/search/news/NaverNewsSearchResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/ohmry/naver/api/search/news/NaverNewsSearchSortType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/ohmry/utils/Curl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/ohmry/utils/JsonUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/github/ohmry/utils/StringUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/ohmry/naver/api/search/news/NaverNewsNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/ohmry/naver/api/search/news/NaverNewsSearchApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/ohmry/naver/api/search/news/NaverNewsSearchApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/ohmry/naver/api/search/news/NaverNewsSearchApiSortType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/io/github/ohmry/naver/api/search/news/NaverNewsSearchApiTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/io/github/ohmry/naver/api/search/news/NaverNewsSearchApiTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +26,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -35,16 +45,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.43218392&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "/Users/ohmry/repository/naver-api-search-news/src/main/java/io/github/ohmry/utils",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.43218392"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/io/github/ohmry/utils" />
+    </key>
+  </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn mvn verify -Dgpg.passphrase=Gns1052713!" />
@@ -57,12 +73,12 @@
       <command value="mvn verify" />
       <command value="mvn clean deploy" />
       <command value="mvn clean install verify deploy" />
-      <command value="mvn clean install verify" />
       <command value="mvn clean install" />
+      <command value="mvn clean install verify" />
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="NaverNewsSearchApiTests.Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NaverNewsSearchApiTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="naver-api-search-news" />
       <extension name="coverage">
         <pattern>
@@ -72,15 +88,19 @@
       </extension>
       <option name="PACKAGE_NAME" value="io.github.ohmry.naver.api.search.news" />
       <option name="MAIN_CLASS_NAME" value="io.github.ohmry.naver.api.search.news.NaverNewsSearchApiTests" />
-      <option name="METHOD_NAME" value="Test" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <envs>
+        <env name="NAVER_CLIENT_ID" value="EpX9aHM15xHEfQie9K3Y" />
+        <env name="NAVER_CLIENT_SECRET" value="Gg1SAYA61c" />
+      </envs>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.NaverNewsSearchApiTests.Test" />
+        <item itemvalue="JUnit.NaverNewsSearchApiTests" />
       </list>
     </recent_temporary>
   </component>
@@ -105,5 +125,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/naver_api_search_news$NaverNewsSearchApiTests.ic" NAME="NaverNewsSearchApiTests Coverage Results" MODIFIED="1672541182733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>io.github.ohmry.naver.api.search.news.*</FILTER>
+    </SUITE>
   </component>
 </project>
