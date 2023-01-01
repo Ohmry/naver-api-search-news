@@ -12,10 +12,10 @@
 <dependency>
     <groupId>io.github.ohmry</groupId>
     <artifactId>naver-api-search-news</artifactId>
-    <version>0.1</version>
+    <version>0.2</version>
 </dependency>
 ```
-메이븐 외 다른 관리툴에 대한 예시를 보려면 [이곳](https://central.sonatype.dev/artifact/io.github.ohmry/naver-api-search-news/0.1)을 클릭하세요.
+메이븐 외 다른 관리툴에 대한 예시를 보려면 [이곳](https://central.sonatype.dev/artifact/io.github.ohmry/naver-api-search-news/0.2)을 클릭하세요.
 
 ### 객체 생성 및 API 호출
 디펜던시를 추가한 뒤 프로젝트에서 아래와 같이 객체를 생성하고, 사용할 수 있습니다. API를 호출하는 방식은 빌더패턴을 이용하여 각 파라미터에 대한 값을 설정하고, API를 호출할 수 있습니다.
@@ -25,13 +25,14 @@
 // 네이버 개발자센터에서 등록한 어플리케이션의 ID와 SECRET값을 사용하여 객체를 생성합니다.
 NaverNewsSearchApi naverNewsSearchApi = new NaverNewsSearchAPI(CLIENT_ID, CLIENT_SECRET);
 
+// API 호출을 위한 값을 세팅합니다.
+naverNewsSearchApi.setQuery("검색어");
+naverNewsSearchApi.setDisplay(10);                              // 한번 조회할 때, 가져올 데이터의 수 (기본값 10) 
+naverNewsSearchApi.setStart(1);                                 // 조회할 때, 페이지의 번호 (기본값 1)
+naverNewsSearchApi.setSort(NaverNewsSearchSortType.ACCURACY);   // 정렬방식 (ACCURACY: 정확도, DATE: 최신순)
+
 // API 호출
-List<NaverNews> newsList = naverNewsSearchApi.builder()
-                                             .query("검색어")
-                                             .display(10)                                  // 한번 조회할 때, 가져올 데이터의 수 (기본값 10)
-                                             .start(1)                                     // 조회할 때, 페이지의 번호 (기본값 1)
-                                             .sort(NaverNewsSearchApiSortType.ACCURACY)    // 정렬방식 (ACCURACY: 정확도, DATE: 최신순)
-                                             .fetch();
+List<NaverNews> newsList = naverNewsSearchApi.fetch();
 
 // 응답받은 뉴스 정보를 출력
 for (NaverNews naverNews : newsList) {
